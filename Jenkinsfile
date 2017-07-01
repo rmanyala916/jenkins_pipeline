@@ -30,5 +30,5 @@ node {
 
    stage name:'Deploy to staging', concurrency:1
    node {
-    sh 'sudo docker ps'
+    sh 'sudo docker-compose up -d --build'
    }  
