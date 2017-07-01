@@ -4,7 +4,7 @@ node {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+      git 'https://github.com/rmanyala916/simple-maven-project-with-tests.git'
       // Get the Maven tool.
       // ** NOTE:  This 'Maven' Maven tool must be configured
       // **       in the global configuration.           
@@ -18,6 +18,10 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
+   stage ('Deploy to staging'){
+    sh 'docker-compose up -d --build'
+   }  
+
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
