@@ -30,5 +30,5 @@ node {
 
    stage name:'Deploy to staging', concurrency:1
    node {
-    sh 'sudo docker-compose up -d --build'
+    sh 'sudo docker run -d -p=3000:80 --network=prodnetwork nginx'
    }  
