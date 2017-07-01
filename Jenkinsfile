@@ -30,5 +30,5 @@ node {
 
    stage name:'Deploy to staging', concurrency:1
    node {
-    sh 'sudo docker run -d -p=3000:80 --network=prodnetwork nginx'
+    sh 'sudo docker run -d -p=3000:80 --network=bundlev2_prodnetwork nginx'
    }  
