@@ -1,3 +1,5 @@
+stage 'CI'
+
 node {
    checkout scm
    
