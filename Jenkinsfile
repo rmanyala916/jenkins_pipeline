@@ -18,12 +18,15 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   stage ('Deploy to staging'){
-    sh 'sudo docker ps'
-   }  
 
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
 }
+
+
+   stage name:'Deploy to staging', concurrency:1
+   node {
+    sh 'sudo docker ps'
+   }  
