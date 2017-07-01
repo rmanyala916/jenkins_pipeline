@@ -19,7 +19,7 @@ node {
       }
    }
    stage ('Deploy to staging'){
-    sh 'docker-compose up -d --build'
+    sh 'sudo docker ps'
    }  
 
    stage('Results') {
