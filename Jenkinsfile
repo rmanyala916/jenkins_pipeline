@@ -34,16 +34,15 @@ node {
             withSonarQubeEnv('Sonar') { 
 
                 if (isUnix()) {
-                    sh "'${mvnHome}/bin/mvn' org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar " + 
-                    '-f pom.xml ' +
-                    '-Dsonar.projectKey=org.sonarqube:java-sonar ' +
-                    '-Dsonar.projectName=Java :: Simple Spring Project ' +
-                    '-Dsonar.projectVersion=1.0 ' +
-                    '-Dsonar.language=java ' +
-                    '-Dsonar.sources=. ' +
-                    '-Dsonar.tests=. ' +
-                    '-Dsonar.test.inclusions=**/*Test*/** ' +
-                    '-Dsonar.exclusions=**/*Test*/**'
+                    sh "'${mvnHome}/bin/mvn' org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml '"
+                    // '-Dsonar.projectKey=org.sonarqube:java-sonar ' +
+                    // '-Dsonar.projectName=Java :: Simple Spring Project ' +
+                    // '-Dsonar.projectVersion=1.0 ' +
+                    // '-Dsonar.language=java ' +
+                    // '-Dsonar.sources=. ' +
+                    // '-Dsonar.tests=. ' +
+                    // '-Dsonar.test.inclusions=**/*Test*/** ' +
+                    // '-Dsonar.exclusions=**/*Test*/**'
                 } else {
                     bat (/"${mvnHome}\bin\mvn" org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml  -Dsonar.projectKey=org.sonarqube:java-sonar -Dsonar.projectName="Java :: Simple Spring Project"/)
 
