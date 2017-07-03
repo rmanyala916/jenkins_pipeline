@@ -74,6 +74,15 @@ node{
     }
 
 }
+
+stage name:'Shutdown staging'
+    node {
+                //sh 'sudo docker run -d -p=3000:80 --network=bundlev2_prodnetwork nginx'
+        dir('BuildQuality'){
+        sh 'sudo docker-compose stop'
+    }
+                
+}
         
 
 
