@@ -6,7 +6,7 @@ node {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/rmanyala916/simple-maven-project-with-tests.git'
+      git 'https://github.com/rmanyala916/simple-spring.git'
       // Get the Maven tool.
       // ** NOTE:  This 'Maven' Maven tool must be configured
       // **       in the global configuration.           
@@ -32,5 +32,4 @@ node {
    node {
     //sh 'sudo docker run -d -p=3000:80 --network=bundlev2_prodnetwork nginx'
     sh 'sudo docker-compose up -d --build'
-
    }  
