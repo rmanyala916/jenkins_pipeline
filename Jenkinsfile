@@ -1,12 +1,13 @@
 node{
     
     checkout scm
-
+    def mvnHome
     dir('BuildQuality'){
         stage('Preparation'){
             def mvnHome
-            mvnHome = tool 'Maven'
+            
             git 'https://github.com/rmanyala916/simple-spring.git'
+            mvnHome = tool 'Maven'
         }
 
         stage('Build') {
@@ -19,7 +20,7 @@ node{
         }
         
         stage('SonarQube Analysis') { 
-            def mvnHome
+           // def mvnHome
             mvnHome = tool 'Maven'
             withSonarQubeEnv('Sonar') { 
                 if (isUnix()) {
