@@ -39,10 +39,10 @@ node{
             }        
         }
 
-        stage('Results') {
-            junit '**/target/surefire-reports/TEST-*.xml'
-            archive 'target/*.jar'
-        }
+        // stage('Results') {
+        //     junit '**/target/surefire-reports/TEST-*.xml'
+        //     archive 'target/*.jar'
+        // }
 
     }
 }
@@ -60,7 +60,7 @@ node{
     def mvnHome
     dir('FunctionalTests'){
 
-        stage('Download Tests'){                        
+        stage('Get Functional Test Scripts'){                        
             git 'https://github.com/rmanyala916/sel-jen.git'
             mvnHome = tool 'Maven'
         }
