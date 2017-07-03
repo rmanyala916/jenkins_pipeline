@@ -34,7 +34,7 @@ node {
             withSonarQubeEnv('Sonar') { 
 
                 if (isUnix()) {
-                    sh ''' "${mvnHome}/bin/mvn" org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml 
+                    sh ''' '${mvnHome}/bin/mvn' org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml 
                     '''
                     // '-Dsonar.projectKey=org.sonarqube:java-sonar ' +
                     // '-Dsonar.projectName=Java :: Simple Spring Project ' +
