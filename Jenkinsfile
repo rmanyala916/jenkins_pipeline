@@ -39,10 +39,10 @@ node{
             }        
         }
 
-        // stage('Results') {
-        //     junit '**/target/surefire-reports/TEST-*.xml'
-        //     archive 'target/*.jar'
-        // }
+        stage('Unit Test Results') {
+            junit '**/target/surefire-reports/TEST-*.xml'
+            //archive 'target/*.jar'
+        }
 
     }
 }
@@ -68,7 +68,7 @@ node{
         stage('Run Tests') {
             sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://seleniumhub:4444/wd/hub clean test "
         }
-        stage('Results') {
+        stage('Functional Test Results') {
             junit '**/target/surefire-reports/TEST-*.xml'
         }
     }
