@@ -4,8 +4,7 @@ node{
     def mvnHome
     dir('BuildQuality'){
         stage('Preparation'){
-            def mvnHome
-            
+                        
             git 'https://github.com/rmanyala916/simple-spring.git'
             mvnHome = tool 'Maven'
         }
@@ -21,7 +20,7 @@ node{
         
         stage('SonarQube Analysis') { 
            // def mvnHome
-            mvnHome = tool 'Maven'
+            //mvnHome = tool 'Maven'
             withSonarQubeEnv('Sonar') { 
                 if (isUnix()) {
                     sh "'${mvnHome}/bin/mvn' org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml "+ 
