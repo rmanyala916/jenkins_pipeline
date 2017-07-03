@@ -1,5 +1,5 @@
 node{
-    
+
     checkout scm
     def mvnHome
     dir('BuildQuality'){
@@ -54,7 +54,24 @@ node{
                     sh 'sudo docker-compose up -d --build'
                 }
                 
-            }  
+            }
+
+        stage('Selenium Tests'){
+            node{
+                def mvnHome
+                dir('FunctionalTests'){
+
+                    stage('Download Tests'){                        
+                        git 'https://github.com/rmanyala916/sel-jen.git'
+                        mvnHome = tool 'Maven'
+                    }
+
+                    stage('Run Tests') {
+                        sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://seleniumhub:4444/wd/hub clean test "
+                    }
+                }
+            }
+        }
 
 
 
